@@ -7,6 +7,7 @@ LIBFT		= $(LIBFT_DIR)/libft.a
 SRC		= \
 	ft_printf.c \
 	ft_printf_convert.c \
+	ft_printf_flags.c \
 
 OBJS	= $(SRC:.c=.o)
 

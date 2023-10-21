@@ -1,31 +1,32 @@
 #include "ft_printf.h"
 
-static char	*parse_arg(char s, va_list *args)
+static char	*convert_format(t_format fmt, va_list *args)
 {
-	if (s == 'c')
-		return (convert_char(va_arg(*args, int)));
-	else if (s == 's')
-		return (convert_str(va_arg(*args, char *)));
-	else if (s == 'p')
-		return (convert_ptr(va_arg(*args, void *)));
-	else if (s == 'd' || s == 'i')
-		return (convert_int(va_arg(*args, int)));
-	else if (s == 'u')
+	if (fmt.specifier == 'c')
+		return (ft_convert_char(va_arg(*args, int)));
+	else if (fmt.specifier == 's')
+		return (ft_convert_str(va_arg(*args, char *)));
+	else if (fmt.specifier == 'p')
+		return (ft_convert_ptr(va_arg(*args, void *)));
+	else if (fmt.specifier == 'd' || fmt.specifier == 'i')
+		return (ft_convert_int(va_arg(*args, int)));
+	else if (fmt.specifier == 'u')
 		return (ft_utoa(va_arg(*args, unsigned int)));
-	else if (s == 'x')
-		return (ft_utoa_base(va_arg(*args, unsigned int), "0123456789abcdef"));
-	else if (s == 'X')
+	else if (fmt.specifier == 'x')
+		return (ft_convert_hex(va_arg(*args, unsigned int)));
+	else if (fmt.specifier == 'X')
 		return (ft_utoa_base(va_arg(*args, unsigned int), "0123456789ABCDEF"));
 	return (NULL);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list	args;
-	int		len;
-	char	*str;
-	char	*procent;
-	char	*arg;
+	va_list		args;
+	int			len;
+	char		*str;
+	char		*procent;
+	char		*arg;	
+	t_format	fmt;
 
 	if (!format)
 		return (-1);
@@ -36,11 +37,13 @@ int	ft_printf(const char *format, ...)
 	{
 		str = ft_strjoin(str, ft_substr(format, 0, procent - format));
 		
-		arg = parse_arg(*(procent + 1), &args);
+		procent++;
+		fmt = ft_parse_flags(&procent);	
+		arg = convert_format(fmt, &args);
 		if (arg)
 			str = ft_strjoin(str, arg);
 
-		format += procent - format + 2;
+		format += procent - format;
 		procent = ft_strchr(format, '%');
 	}
 	str = ft_strjoin(str, format);
