@@ -13,7 +13,7 @@ static char	*convert_format(t_format fmt, va_list *args)
 	else if (fmt.specifier == 'u')
 		return (ft_utoa(va_arg(*args, unsigned int)));
 	else if (fmt.specifier == 'x')
-		return (ft_convert_hex(va_arg(*args, unsigned int)));
+		return (ft_convert_hex(va_arg(*args, unsigned int), fmt));
 	else if (fmt.specifier == 'X')
 		return (ft_utoa_base(va_arg(*args, unsigned int), "0123456789ABCDEF"));
 	return (NULL);

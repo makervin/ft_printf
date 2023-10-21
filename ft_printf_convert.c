@@ -30,6 +30,10 @@ char	*ft_convert_int(int i)
 
 char	*ft_convert_hex(unsigned int i, t_format fmt)
 {
-	if (fmt.flags )
-	return (ft_utoa_base(i, "0123456789abcdef"));
+	char	*str;
+
+	str = ft_utoa_base(i, "0123456789abcdef");
+	if (fmt.flags & FFLAG_ALT)
+		return (ft_strjoin("0x", str));
+	return (str);
 }

@@ -30,7 +30,7 @@ t_format	ft_parse_flags(char **str)
 
 	while (is_flag(**str))
 	{
-		format.flags &= is_flag(**str);
+		format.flags |= is_flag(**str);
 		(*str)++;
 	}
 	format.specifier = **str;
