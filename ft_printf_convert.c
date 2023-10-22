@@ -13,7 +13,6 @@ char	*ft_convert_char(char c, t_format fmt)
 char	*ft_convert_str(char *str, t_format fmt)
 {
 	char	*ret;
-	char	*padding;
 	size_t	len;
 
 	if (!str)
@@ -25,7 +24,6 @@ char	*ft_convert_str(char *str, t_format fmt)
 char	*ft_convert_ptr(void *ptr, t_format fmt)
 {
 	char	*ret;
-	char	*padding;
 	size_t	len;
 
 	if (!ptr)
@@ -39,16 +37,24 @@ char	*ft_convert_ptr(void *ptr, t_format fmt)
 char	*ft_convert_int(int i, t_format fmt)
 {
 	char	*ret;
-	char	*padding;
 	size_t	len;
 
 	ret = ft_itoa(i);
 	if (i >= 0)
 	{
+		if (fmt.flags & FFLAG_ZERO)
+		{
+			if (fmt.flags & FFLAG_PLUS || fmt.flags & FFLAG_SPACE)
+				fmt.width -= 1;
+			ret = ft_create_paddding(ret, fmt);
+		}
 		if (fmt.flags & FFLAG_PLUS)
 			ret = ft_strjoin("+", ret);
 		else if (fmt.flags & FFLAG_SPACE)
 			ret = ft_strjoin(" ", ret);
+		if (~fmt.flags & FFLAG_ZERO)
+			ret = ft_create_paddding(ret, fmt);
+		return (ret);
 	}
 	ret = ft_create_paddding(ret, fmt);
 	return (ret);
@@ -57,7 +63,6 @@ char	*ft_convert_int(int i, t_format fmt)
 char	*ft_convert_hex(unsigned int i, t_format fmt)
 {
 	char	*ret;
-	char	*padding;
 	size_t	len;
 
 	if (fmt.specifier == 'X')
