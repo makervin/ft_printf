@@ -33,6 +33,16 @@ t_format	ft_parse_flags(char **str)
 		format.flags |= is_flag(**str);
 		(*str)++;
 	}
+	if (**str >= '1' && **str <= '9')
+	{
+		format.width = **str - '0';
+		(*str)++;
+		while (ft_isdigit(**str))
+		{
+			format.width = format.width * 10 + **str - '0';
+			(*str)++;
+		}
+	}
 	format.specifier = **str;
 	(*str)++;
 	

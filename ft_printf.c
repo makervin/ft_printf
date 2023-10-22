@@ -3,9 +3,9 @@
 static char	*convert_format(t_format fmt, va_list *args)
 {
 	if (fmt.specifier == 'c')
-		return (ft_convert_char(va_arg(*args, int)));
+		return (ft_convert_char(va_arg(*args, int), fmt));
 	else if (fmt.specifier == 's')
-		return (ft_convert_str(va_arg(*args, char *)));
+		return (ft_convert_str(va_arg(*args, char *), fmt));
 	else if (fmt.specifier == 'p')
 		return (ft_convert_ptr(va_arg(*args, void *)));
 	else if (fmt.specifier == 'd' || fmt.specifier == 'i')
