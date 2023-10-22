@@ -25,7 +25,7 @@ typedef struct	s_format
 int			ft_printf(const char *format, ...);
 
 t_format	ft_parse_flags(char **str);
-char		*ft_create_paddding(char *str, t_format fmt, char c);
+char		*ft_create_paddding(char *str, t_format fmt);
 
 
 char		*ft_convert_char(char c, t_format fmt);

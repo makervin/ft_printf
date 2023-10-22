@@ -57,11 +57,14 @@ int main()
 	ft_printf	("lft\t:%05d\n", i);
 	printf		("std\t:%05d\n", i);
 	printf		("\n");
+	ft_printf	("lft\t:%-05d\n", i);
+	printf		("std\t:%-05d\n", i);
+	printf		("\n");
 	ft_printf	("lft\t:%-10dH\n", i);
 	printf		("std\t:%-10dH\n", i);
 	printf		("\n");
-	ft_printf	("lft\t:%+5d\n", 0);
-	printf		("std\t:%+5d\n", 0);
+	ft_printf	("lft\t:%+ 5d\n", 0);
+	printf		("std\t:%+ 5d\n", 0);
 	printf		("\n");
 	ft_printf	("lft\t:% 5d\n", 0);
 	printf		("std\t:% 5d\n", 0);

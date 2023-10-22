@@ -43,16 +43,21 @@ t_format	ft_parse_flags(char **str)
 	return (format);
 }
 
-char	*ft_create_paddding(char *str, t_format fmt, char c)
+char	*ft_create_paddding(char *str, t_format fmt)
 {
 	char	*padding;
 	size_t	len;
 	char	*ret;
+	char	c;
 
 	len = ft_strlen(str);
 	ret = str;
 	if (fmt.width > len)
 	{
+		if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS)
+			c = '0';
+		else
+			c = ' ';
 		len = fmt.width - len;
 		padding = (char *)ft_calloc(len + 1, sizeof(char));	
 		if (!padding)

@@ -6,7 +6,7 @@ char	*ft_convert_char(char c, t_format fmt)
 
 	ret = ft_strdup(" ");
 	ret[0] = c;
-	ret = ft_create_paddding(ret, fmt, ' ');
+	ret = ft_create_paddding(ret, fmt);
 	return (ret);
 }
 
@@ -18,7 +18,7 @@ char	*ft_convert_str(char *str, t_format fmt)
 
 	if (!str)
 		return (ft_strdup("(null)"));
-	ret = ft_create_paddding(str, fmt, ' ');
+	ret = ft_create_paddding(str, fmt);
 	return (ret);
 }
 
@@ -32,7 +32,7 @@ char	*ft_convert_ptr(void *ptr, t_format fmt)
 		ret = ft_strdup("(nil)");
 	else
 		ret = ft_strjoin("0x", ft_ultoa_base((unsigned long)ptr, "0123456789abcdef"));
-	ret = ft_create_paddding(ret, fmt, ' ');
+	ret = ft_create_paddding(ret, fmt);
 	return (ret);
 }
 
@@ -50,10 +50,7 @@ char	*ft_convert_int(int i, t_format fmt)
 		else if (fmt.flags & FFLAG_SPACE)
 			ret = ft_strjoin(" ", ret);
 	}
-	if (fmt.flags & FFLAG_ZERO)
-		ret = ft_create_paddding(ret, fmt, '0');
-	else 
-		ret = ft_create_paddding(ret, fmt, ' ');
+	ret = ft_create_paddding(ret, fmt);
 	return (ret);
 }
 
@@ -74,9 +71,6 @@ char	*ft_convert_hex(unsigned int i, t_format fmt)
 		else
 			ret = ft_strjoin("0x", ret);
 	}
-	if (fmt.flags & FFLAG_ZERO)
-		ret = ft_create_paddding(ret, fmt, '0');
-	else 
-		ret = ft_create_paddding(ret, fmt, ' ');
+	ret = ft_create_paddding(ret, fmt);
 	return (ret);
 }
