@@ -66,10 +66,18 @@ char	*ft_convert_hex(unsigned int i, t_format fmt)
 		ret = ft_utoa_base(i, "0123456789abcdef");
 	if (fmt.flags & FFLAG_ALT)
 	{
+		if (fmt.flags & FFLAG_ZERO)
+		{
+			fmt.width -= 2;
+			ret = ft_create_paddding(ret, fmt);
+		}
 		if (fmt.specifier == 'X')
 			ret = ft_strjoin("0X", ret);
 		else
 			ret = ft_strjoin("0x", ret);
+		if (~fmt.flags & FFLAG_ZERO)
+			ret = ft_create_paddding(ret, fmt);
+		return (ret);
 	}
 	ret = ft_create_paddding(ret, fmt);
 	return (ret);
