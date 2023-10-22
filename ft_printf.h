@@ -28,8 +28,8 @@ t_format	ft_parse_flags(char **str);
 
 char		*ft_convert_char(char c, t_format fmt);
 char		*ft_convert_str(char *str, t_format fmt);
-char		*ft_convert_ptr(void *ptr);
-char		*ft_convert_int(int i);
+char		*ft_convert_ptr(void *ptr, t_format fmt);
+char		*ft_convert_int(int i, t_format fmt);
 char		*ft_convert_hex(unsigned int i, t_format fmt);
 
 #endif

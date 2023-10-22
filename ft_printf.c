@@ -1,21 +1,21 @@
 #include "ft_printf.h"
 
-static char	*convert_format(t_format fmt, va_list *args)
+static char	*convert_arg(t_format fmt, va_list *args)
 {
 	if (fmt.specifier == 'c')
 		return (ft_convert_char(va_arg(*args, int), fmt));
 	else if (fmt.specifier == 's')
 		return (ft_convert_str(va_arg(*args, char *), fmt));
 	else if (fmt.specifier == 'p')
-		return (ft_convert_ptr(va_arg(*args, void *)));
+		return (ft_convert_ptr(va_arg(*args, void *), fmt));
 	else if (fmt.specifier == 'd' || fmt.specifier == 'i')
-		return (ft_convert_int(va_arg(*args, int)));
+		return (ft_convert_int(va_arg(*args, int), fmt));
 	else if (fmt.specifier == 'u')
 		return (ft_utoa(va_arg(*args, unsigned int)));
 	else if (fmt.specifier == 'x')
 		return (ft_convert_hex(va_arg(*args, unsigned int), fmt));
 	else if (fmt.specifier == 'X')
-		return (ft_utoa_base(va_arg(*args, unsigned int), "0123456789ABCDEF"));
+		return (ft_convert_hex(va_arg(*args, unsigned int), fmt));
 	return (NULL);
 }
 
@@ -39,7 +39,7 @@ int	ft_printf(const char *format, ...)
 		
 		procent++;
 		fmt = ft_parse_flags(&procent);	
-		arg = convert_format(fmt, &args);
+		arg = convert_arg(fmt, &args);
 		if (arg)
 			str = ft_strjoin(str, arg);
 

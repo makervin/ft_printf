@@ -5,21 +5,15 @@ static int	is_flag(int c)
 	if (c == '#')
 		return (FFLAG_ALT);
 	if (c == '0')
-		return (FFLAG_ALT);
+		return (FFLAG_ZERO);
 	if (c == ' ')
-		return (FFLAG_ALT);
+		return (FFLAG_SPACE);
 	if (c == '+')
-		return (FFLAG_ALT);
+		return (FFLAG_PLUS);
 	if (c == '-')
 		return (FFLAG_MINUS);
 	return (0);
 }
-
-// static int	is_specifier(int c)
-// {
-// 	return ((c == 'c') || (c == 's') || (c == 'p') || (c == 'd') || (c == 'i')
-// 			|| (c == 'u') || (c == 'x') || (c == 'X') || (c == '%'));
-// }
 
 t_format	ft_parse_flags(char **str)
 {
