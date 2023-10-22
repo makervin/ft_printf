@@ -45,20 +45,30 @@ int main()
 	
 	// printf		("\n\n");
 	
-	// ft_printf	("lft\t:%d\n", i);
-	// printf		("std\t:%d\n", i);
-	// printf		("\n");
-	// ft_printf	("lft\t:%2d\n", i);
-	// printf		("std\t:%2d\n", i);
-	// printf		("\n");
-	// ft_printf	("lft\t:%5d\n", i);
-	// printf		("std\t:%5d\n", i);
-	// printf		("\n");
-	// ft_printf	("lft\t:%05d\n", i);
-	// printf		("std\t:%05d\n", i);
-	// printf		("\n");
-	// ft_printf	("lft\t:%-10dH\n", i);
-	// printf		("std\t:%-10dH\n", i);
+	ft_printf	("lft\t:%d\n", i);
+	printf		("std\t:%d\n", i);
+	printf		("\n");
+	ft_printf	("lft\t:%2d\n", i);
+	printf		("std\t:%2d\n", i);
+	printf		("\n");
+	ft_printf	("lft\t:%5d\n", i);
+	printf		("std\t:%5d\n", i);
+	printf		("\n");
+	ft_printf	("lft\t:%05d\n", i);
+	printf		("std\t:%05d\n", i);
+	printf		("\n");
+	ft_printf	("lft\t:%-10dH\n", i);
+	printf		("std\t:%-10dH\n", i);
+	printf		("\n");
+	ft_printf	("lft\t:%+5d\n", 0);
+	printf		("std\t:%+5d\n", 0);
+	printf		("\n");
+	ft_printf	("lft\t:% 5d\n", 0);
+	printf		("std\t:% 5d\n", 0);
+	printf		("\n");
+	ft_printf	("lft\t:% 05d\n", 0);
+	printf		("std\t:% 05d\n", 0);
+	printf		("\n");
 	
 	// printf		("\n\n");
 	
@@ -79,29 +89,29 @@ int main()
 
 	// printf		("\n\n");
 	
-	ft_printf	("lft\t:%#x\n", 255);
-	printf		("std\t:%#x\n", 255);
-	printf		("\n");
-	ft_printf	("lft\t:%x\n", i);
-	printf		("std\t:%x\n", i);
-	printf		("\n");
-	ft_printf	("lft\t:%2x\n", i);
-	printf		("std\t:%2x\n", i);
-	printf		("\n");
-	ft_printf	("lft\t:%5x\n", i);
-	printf		("std\t:%5x\n", i);
-	printf		("\n");
-	ft_printf	("lft\t:%05x\n", i);
-	printf		("std\t:%05x\n", i);
-	printf		("\n");
-	ft_printf	("lft\t:%#5x\n", i);
-	printf		("std\t:%#5x\n", i);
-	printf		("\n");
-	ft_printf	("lft\t:%#010x\n", i);
-	printf		("std\t:%#010x\n", i);
-	printf		("\n");
-	ft_printf	("lft\t:%-10xH\n", i);
-	printf		("std\t:%-10xH\n", i);
+	// ft_printf	("lft\t:%#x\n", 255);
+	// printf		("std\t:%#x\n", 255);
+	// printf		("\n");
+	// ft_printf	("lft\t:%x\n", i);
+	// printf		("std\t:%x\n", i);
+	// printf		("\n");
+	// ft_printf	("lft\t:%2x\n", i);
+	// printf		("std\t:%2x\n", i);
+	// printf		("\n");
+	// ft_printf	("lft\t:%5x\n", i);
+	// printf		("std\t:%5x\n", i);
+	// printf		("\n");
+	// ft_printf	("lft\t:%05x\n", i);
+	// printf		("std\t:%05x\n", i);
+	// printf		("\n");
+	// ft_printf	("lft\t:%#5x\n", i);
+	// printf		("std\t:%#5x\n", i);
+	// printf		("\n");
+	// ft_printf	("lft\t:%#010x\n", i);
+	// printf		("std\t:%#010x\n", i);
+	// printf		("\n");
+	// ft_printf	("lft\t:%-10xH\n", i);
+	// printf		("std\t:%-10xH\n", i);
 
 	// printf		("\n\n");
 	

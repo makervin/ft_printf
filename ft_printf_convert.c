@@ -43,6 +43,13 @@ char	*ft_convert_int(int i, t_format fmt)
 	size_t	len;
 
 	ret = ft_itoa(i);
+	if (i >= 0)
+	{
+		if (fmt.flags & FFLAG_PLUS)
+			ret = ft_strjoin("+", ret);
+		else if (fmt.flags & FFLAG_SPACE)
+			ret = ft_strjoin(" ", ret);
+	}
 	if (fmt.flags & FFLAG_ZERO)
 		ret = ft_create_paddding(ret, fmt, '0');
 	else 
@@ -54,7 +61,6 @@ char	*ft_convert_hex(unsigned int i, t_format fmt)
 {
 	char	*ret;
 	char	*padding;
-	char	padding_char;
 	size_t	len;
 
 	if (fmt.specifier == 'X')
