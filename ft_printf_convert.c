@@ -15,9 +15,10 @@ char	*ft_convert_str(char *str, t_format fmt)
 	char	*ret;
 	size_t	len;
 
-	if (!str)
-		return (ft_strdup("(null)"));
-	ret = ft_create_paddding(str, fmt);
+	ret = str;
+	if (!ret)
+		ret = (ft_strdup("(null)"));
+	ret = ft_create_paddding(ret, fmt);
 	return (ret);
 }
 
