@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static int	is_flag(int c)
+static int	is_flag(char c)
 {
 	if (c == '#')
 		return (FFLAG_ALT);
@@ -41,4 +41,28 @@ t_format	ft_parse_flags(char **str)
 	(*str)++;
 	
 	return (format);
+}
+
+char	*ft_create_paddding(char *str, t_format fmt, char c)
+{
+	char	*padding;
+	size_t	len;
+	char	*ret;
+
+	len = ft_strlen(str);
+	ret = str;
+	if (fmt.width > len)
+	{
+		len = fmt.width - len;
+		padding = (char *)ft_calloc(len + 1, sizeof(char));	
+		if (!padding)
+			return (NULL);
+		while (len--)
+			padding[len] = c;
+		if (fmt.flags & FFLAG_MINUS)
+			ret = ft_strjoin(str, padding);
+		else
+			ret = ft_strjoin(padding, str);
+	}
+	return (ret);
 }
