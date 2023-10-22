@@ -22,8 +22,8 @@ int main()
 	ft_printf	("lft\t:%05d\n", -i);
 	printf		("std\t:%05d\n", -i);
 	printf		("\n");
-	ft_printf	("lft\t:%-05d\n", i);
-	printf		("std\t:%-05d\n", i);
+	ft_printf	("lft\t:%-05dH\n", i);
+	printf		("std\t:%-05dH\n", i);
 	printf		("\n");
 	ft_printf	("lft\t:%-10dH\n", i);
 	printf		("std\t:%-10dH\n", i);
