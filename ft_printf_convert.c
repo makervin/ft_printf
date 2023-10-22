@@ -40,7 +40,10 @@ char	*ft_convert_int(int i, t_format fmt)
 	char	*ret;
 	size_t	len;
 
-	ret = ft_itoa(i);
+	if (i < 0)
+		ret = ft_utoa((unsigned int)-i);
+	else
+		ret = ft_utoa((unsigned int)i);
 	if (i >= 0)
 	{
 		if (fmt.flags & FFLAG_ZERO)

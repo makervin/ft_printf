@@ -19,12 +19,13 @@ typedef struct	s_format
 {
 	char		specifier;
 	int			width;
+	int			precision;
 	t_fflags	flags;
 }				t_format;
 
 int			ft_printf(const char *format, ...);
 
-t_format	ft_parse_flags(char **str);
+t_format	ft_parse_format(char **str);
 char		*ft_create_paddding(char *str, t_format fmt);
 
 

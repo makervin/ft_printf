@@ -8,6 +8,7 @@ SRC		= \
 	ft_printf.c \
 	ft_printf_convert.c \
 	ft_printf_flags.c \
+	ft_printf_parse.c \
 
 OBJS	= $(SRC:.c=.o)
 

@@ -38,7 +38,7 @@ int	ft_printf(const char *format, ...)
 		str = ft_strjoin(str, ft_substr(format, 0, procent - format));
 		
 		procent++;
-		fmt = ft_parse_flags(&procent);	
+		fmt = ft_parse_format(&procent);	
 		arg = convert_arg(fmt, &args);
 		if (arg)
 			str = ft_strjoin(str, arg);
