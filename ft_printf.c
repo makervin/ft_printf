@@ -16,64 +16,81 @@ static char	*convert_arg(t_format fmt, va_list *args)
 		return (ft_convert_hex(va_arg(*args, unsigned int), fmt));
 	else if (fmt.specifier == 'X')
 		return (ft_convert_uhex(va_arg(*args, unsigned int), fmt));
+	else if (fmt.specifier == '%')
+		return (ft_convert_char('%', fmt));
 	return (NULL);
 }
 
-static int output_append(char *s1, char *s2)
+static int print_append_format(char **dst, const char *s2, size_t s1_len, size_t s2_len)
 {
+	char	*ret;
 
+	ret = ft_strnjoin(*dst, s2, s1_len, s2_len);
+	free(*dst);
+	if (!ret)
+		return (-1);
+	*dst = ret;
+	return (s2_len);
 }
 
-int	ft_printf(const char *format, ...)
+static int print_append_arg(char **dst, t_format fmt, char *arg, size_t s1_len)
 {
-	va_list		args;
-	int			len;
-	char		*str;
-	char		*procent;
-	char		*arg;
-	char		*tmp;
-	t_format	fmt;
+	char	*ret;
+	int		len;
 
-	if (!format)
+	if (fmt.specifier == 'c')
+		len = 1;
+	else
+		len = ft_strlen(arg);
+	ret = ft_strnjoin(*dst, arg, s1_len, len);
+	free(*dst);
+	free(arg);
+	if (!ret)
 		return (-1);
-	va_start(args, format);
-	str = ft_strdup("");
-	if (!str)
+	*dst = ret;
+	return (len);
+}
+
+int	ft_vprintf(const char *format, va_list *ap)
+{
+	char	*output;
+	char	*procent;
+	int		len;
+
+	t_format	fmt;
+	output = ft_strdup("");
+	if (!output)
 		return -1;
 	procent = ft_strchr(format, '%');
 	len = 0;
 	while (procent != NULL)
 	{
-		tmp = ft_substr(format, 0, procent - format);
-		if (!tmp)
-			return (free(str), -1);
-		str = ft_strnjoin_free(str, tmp, len, ft_strlen(tmp));
-		len += procent - format;
+		len += print_append_format(&output, format, len, procent - format);
+		if (len < 0)
+			return (-1);
 		
 		procent++;
-		fmt = ft_parse_format(&procent, &args);	
-		arg = convert_arg(fmt, &args);
-		if (arg)
-		{
-			if (fmt.specifier == 'c')
-			{
-				str = ft_strnjoin(str, arg, len, 1);
-				len += 1;
-			}
-			else
-			{
-				str = ft_strnjoin(str, arg, len, ft_strlen(arg));
-				len += ft_strlen(arg);
-			}
-		}
+		fmt = ft_parse_format(&procent, ap);	
+		len += print_append_arg(&output, fmt, convert_arg(fmt, ap), len);
 
 		format += procent - format;
 		procent = ft_strchr(format, '%');
 	}
-	str = ft_strnjoin(str, format, len, ft_strlen(format));
-	len += ft_strlen(format);
-	len = write(1, str, len);
-	free(str);
-	va_end(args);
+	len += print_append_format(&output, format, len, ft_strlen(format));
+	len = write(1, output, len);
+	free(output);
+	return (len);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	va_list		ap;
+	int			len;
+
+	if (!format)
+		return (-1);
+	va_start(ap, format);
+	len = ft_vprintf(format, &ap);
+	va_end(ap);
 	return (len);
 }

@@ -12,25 +12,28 @@ char	*ft_convert_char(char c, t_format fmt)
 
 char	*ft_convert_str(char *str, t_format fmt)
 {
-	char	*ret;
-
-	ret = str;
-	if (!ret)
-		ret = (ft_strdup("(null)"));
-	ret = ft_apply_padding(ret, fmt);
-	return (ret);
+	if (str == NULL)
+		str = (ft_strdup("(null)"));
+	else
+		str = (ft_strdup(str));
+	str = ft_apply_padding(str, fmt);
+	return (str);
 }
 
 char	*ft_convert_ptr(void *ptr, t_format fmt)
 {
-	char	*ret;
+	char	*tmp;
 
-	if (!ptr)
-		ret = ft_strdup("(nil)");
+	if (ptr == NULL)
+		ptr = ft_strdup("(nil)");
 	else
-		ret = ft_strjoin("0x", ft_ultoa_base((unsigned long)ptr, "0123456789abcdef"));
-	ret = ft_apply_padding(ret, fmt);
-	return (ret);
+	{
+		tmp = ft_ultoa_base((unsigned long)ptr, "0123456789abcdef");
+		ptr = ft_strjoin("0x", tmp);
+		free(tmp);
+	}
+	ptr = ft_apply_padding(ptr, fmt);
+	return (ptr);
 }
 
 char	*ft_convert_int(int i, t_format fmt)

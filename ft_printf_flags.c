@@ -39,16 +39,22 @@ char	*ft_apply_zero_padding(char *str, t_format fmt)
 
 char	*ft_apply_sign(char *str, int negative, t_format fmt)
 {
+	char	*ret;
+
 	if (negative)
 	{
-		str = ft_strjoin("-", str);
-		return (str);
+		ret = ft_strjoin("-", str);
+		free(str);
 	}
-	if (fmt.flags & FFLAG_PLUS)
-		str = ft_strjoin("+", str);
-	else if (fmt.flags & FFLAG_SPACE)
-		str = ft_strjoin(" ", str);
-	return (str);
+	else 
+	{
+		ret = str;
+		if (fmt.flags & FFLAG_PLUS)
+			ret = ft_strjoin("+", str);
+		else if (fmt.flags & FFLAG_SPACE)
+			ret = ft_strjoin(" ", str);
+	}
+	return (ret);
 }
 
 char	*ft_apply_precision(char *str, t_format fmt)
