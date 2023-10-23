@@ -43,6 +43,7 @@ SRC			= \
 	string/ft_strdup.c \
 	string/ft_striteri.c \
 	string/ft_strjoin.c \
+	string/ft_strnjoin.c \
 	string/ft_strlcat.c \
 	string/ft_strlcpy.c \
 	string/ft_strlen.c \

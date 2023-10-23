@@ -25,7 +25,8 @@ int	ft_printf(const char *format, ...)
 	int			len;
 	char		*str;
 	char		*procent;
-	char		*arg;	
+	char		*arg;
+	char		*tmp;
 	t_format	fmt;
 
 	if (!format)
@@ -33,21 +34,36 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	str = ft_strdup("");
 	procent = ft_strchr(format, '%');
+	len = 0;
 	while (procent != NULL)
 	{
-		str = ft_strjoin(str, ft_substr(format, 0, procent - format));
+		tmp = ft_substr(format, 0, procent - format);
+		str = ft_strnjoin(str, tmp, len, ft_strlen(tmp));
+		len += procent - format;
 		
 		procent++;
 		fmt = ft_parse_format(&procent, &args);	
 		arg = convert_arg(fmt, &args);
 		if (arg)
-			str = ft_strjoin(str, arg);
+		{
+			if (fmt.specifier == 'c')
+			{
+				str = ft_strnjoin(str, arg, len, 1);
+				len += 1;
+			}
+			else
+			{
+				str = ft_strnjoin(str, arg, len, ft_strlen(arg));
+				len += ft_strlen(arg);
+			}
+		}
 
 		format += procent - format;
 		procent = ft_strchr(format, '%');
 	}
-	str = ft_strjoin(str, format);
-	len = write(1, str, ft_strlen(str));
+	str = ft_strnjoin(str, format, len, ft_strlen(format));
+	len += ft_strlen(format);
+	len = write(1, str, len);
 	free(str);
 	va_end(args);
 	return (len);
