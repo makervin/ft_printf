@@ -33,12 +33,16 @@ int	ft_printf(const char *format, ...)
 		return (-1);
 	va_start(args, format);
 	str = ft_strdup("");
+	if (!str)
+		return -1;
 	procent = ft_strchr(format, '%');
 	len = 0;
 	while (procent != NULL)
 	{
 		tmp = ft_substr(format, 0, procent - format);
-		str = ft_strnjoin(str, tmp, len, ft_strlen(tmp));
+		if (!tmp)
+			return (free(str), -1);
+		str = ft_strnjoin_free(str, tmp, len, ft_strlen(tmp));
 		len += procent - format;
 		
 		procent++;
