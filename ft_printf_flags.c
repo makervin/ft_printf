@@ -50,3 +50,21 @@ char	*ft_apply_sign(char *str, int negative, t_format fmt)
 		str = ft_strjoin(" ", str);
 	return (str);
 }
+
+char	*ft_apply_precision(char *str, t_format fmt)
+{
+	char	*padding;
+	int		len;
+
+	len = fmt.precision - ft_strlen(str);
+	if (fmt.flags & FFLAG_SPACE || fmt.flags & FFLAG_PLUS)
+		len--;
+	if (len > 0)
+	{
+		padding = (char *)ft_calloc(len + 1, sizeof(char));
+		while (len--)
+			padding[len] = '0';
+		str = ft_strjoin(padding, str);
+	}
+	return (str);
+}

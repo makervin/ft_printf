@@ -16,7 +16,7 @@ static int	is_flag(char c)
 }
 
 //	%[$][flags][width][.precision][length modifier]conversion
-t_format	ft_parse_format(char **str)
+t_format	ft_parse_format(char **str, va_list *args)
 {
 	t_format	format;
 
@@ -42,10 +42,18 @@ t_format	ft_parse_format(char **str)
 	if (**str == '.')
 	{
 		(*str)++;
-		while (ft_isdigit(**str))
+		if (**str == '*')
 		{
-			format.precision = format.precision * 10 + **str - '0';
+			format.precision = va_arg(*args, int);
 			(*str)++;
+		}
+		else
+		{
+			while (ft_isdigit(**str))
+			{
+				format.precision = format.precision * 10 + **str - '0';
+				(*str)++;
+			}
 		}
 	}
 	format.specifier = **str;

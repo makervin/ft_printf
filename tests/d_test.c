@@ -48,4 +48,10 @@ int main()
 	printf		("\n");
 	ft_printf	("lft: '10.5d'\t:%10.5d\n", -i);
 	printf		("std: '10.5d'\t:%10.5d\n", -i);
+	printf		("\n");
+	ft_printf	("lft: '10.5d'\t:%010.5d\n", -i);
+	printf		("std: '10.5d'\t:%010.5d\n", -i);
+	printf		("\n");
+	ft_printf	("lft: '10.5d'\t:%10.*d\n", 10, -i);
+	printf		("std: '10.5d'\t:%10.*d\n", 10, -i);
 }	

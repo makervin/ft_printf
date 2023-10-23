@@ -15,7 +15,7 @@ static char	*convert_arg(t_format fmt, va_list *args)
 	else if (fmt.specifier == 'x')
 		return (ft_convert_hex(va_arg(*args, unsigned int), fmt));
 	else if (fmt.specifier == 'X')
-		return (ft_convert_hex(va_arg(*args, unsigned int), fmt));
+		return (ft_convert_uhex(va_arg(*args, unsigned int), fmt));
 	return (NULL);
 }
 
@@ -38,7 +38,7 @@ int	ft_printf(const char *format, ...)
 		str = ft_strjoin(str, ft_substr(format, 0, procent - format));
 		
 		procent++;
-		fmt = ft_parse_format(&procent);	
+		fmt = ft_parse_format(&procent, &args);	
 		arg = convert_arg(fmt, &args);
 		if (arg)
 			str = ft_strjoin(str, arg);

@@ -25,10 +25,12 @@ typedef struct	s_format
 
 int			ft_printf(const char *format, ...);
 
-t_format	ft_parse_format(char **str);
+t_format	ft_parse_format(char **str, va_list *args);
+
 char		*ft_apply_padding(char *str, t_format fmt);
 char		*ft_apply_zero_padding(char *str, t_format fmt);
 char		*ft_apply_sign(char *str, int negative, t_format fmt);
+char		*ft_apply_precision(char *str, t_format fmt);
 
 
 char		*ft_convert_char(char c, t_format fmt);
@@ -36,5 +38,6 @@ char		*ft_convert_str(char *str, t_format fmt);
 char		*ft_convert_ptr(void *ptr, t_format fmt);
 char		*ft_convert_int(int i, t_format fmt);
 char		*ft_convert_hex(unsigned int i, t_format fmt);
+char		*ft_convert_uhex(unsigned int i, t_format fmt);
 
 #endif
