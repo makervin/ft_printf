@@ -3,38 +3,30 @@
 char	*ft_convert_char(char c, t_format fmt)
 {
 	char	*ret;
-	int		padding_len;
 
 	ret = ft_strdup(" ");
-	padding_len = fmt.width - 1;
-	if (padding_len > 0)
-		ret = ft_apply_padding(ret, padding_len, fmt.flags & FFLAG_MINUS);
+	ret = ft_apply_padding(ret, fmt.width, fmt.flags & FFLAG_MINUS);
 	if (fmt.flags & FFLAG_MINUS)
 		ret[0] = c;
 	else
-		ret[padding_len] = c;
+		ret[ft_strlen(ret) - 1] = c;
 		
 	return (ret);
 }
 
 char	*ft_convert_str(char *str, t_format fmt)
 {
-	int	padding_len;
-
 	if (str == NULL)
 		str = (ft_strdup("(null)"));
 	else
 		str = (ft_strdup(str));
-	padding_len = fmt.width - ft_strlen(str);
-	if (padding_len > 0)
-		str = ft_apply_padding(str, padding_len, fmt.flags & FFLAG_MINUS);
+	str = ft_apply_padding(str, fmt.width, fmt.flags & FFLAG_MINUS);
 	return (str);
 }
 
 char	*ft_convert_ptr(void *ptr, t_format fmt)
 {
 	char	*tmp;
-	int		padding_len;
 
 	if (ptr == NULL)
 		ptr = ft_strdup("(nil)");
@@ -44,9 +36,7 @@ char	*ft_convert_ptr(void *ptr, t_format fmt)
 		ptr = ft_strjoin("0x", tmp);
 		free(tmp);
 	}
-	padding_len = fmt.width - ft_strlen(ptr);
-	if (padding_len > 0)
-		ptr = ft_apply_padding(ptr, padding_len, fmt.flags & FFLAG_MINUS);
+	ptr = ft_apply_padding(ptr, fmt.width, fmt.flags & FFLAG_MINUS);
 	return (ptr);
 }
 
@@ -66,7 +56,7 @@ char	*ft_convert_int(int i, t_format fmt)
 	else 
 	{
 		ret = ft_apply_sign(ret, i < 0, fmt);
-		// ret = ft_apply_padding(ret, fmt);
+		ret = ft_apply_padding(ret, fmt.width, fmt.flags & FFLAG_MINUS);
 	}
 	return (ret);
 }

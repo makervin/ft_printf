@@ -1,10 +1,14 @@
 #include "ft_printf.h"
 
-char	*ft_apply_padding(char *str, int len, int minus)
+char	*ft_apply_padding(char *str, int width, int minus)
 {
 	char	*padding;
 	char	*ret;
+	int		len;
 
+	len = width - ft_strlen(str);
+	if (len <= 0)
+		return (str);
 	padding = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!padding)
 		return (NULL);
