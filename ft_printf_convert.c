@@ -61,21 +61,19 @@ char	*ft_convert_hex(unsigned int i, t_format fmt)
 		ret = ft_utoa_base(i, "0123456789ABCDEF");
 	else
 		ret = ft_utoa_base(i, "0123456789abcdef");
-	if (fmt.flags & FFLAG_ALT)
+	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS)
 	{
-		if (fmt.flags & FFLAG_ZERO)
-		{
+		if (fmt.flags & FFLAG_ALT)
 			fmt.width -= 2;
-			ret = ft_apply_padding(ret, fmt);
-		}
-		if (fmt.specifier == 'X')
-			ret = ft_strjoin("0X", ret);
-		else
+		ret = ft_apply_zero_padding(ret, fmt);
+		if (fmt.flags & FFLAG_ALT)
 			ret = ft_strjoin("0x", ret);
-		if (~fmt.flags & FFLAG_ZERO)
-			ret = ft_apply_padding(ret, fmt);
-		return (ret);
 	}
-	ret = ft_apply_padding(ret, fmt);
+	else 
+	{
+		if (fmt.flags & FFLAG_ALT)
+			ret = ft_strjoin("0x", ret);
+		ret = ft_apply_padding(ret, fmt);
+	}
 	return (ret);
 }
