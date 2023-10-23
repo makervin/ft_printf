@@ -19,6 +19,11 @@ static char	*convert_arg(t_format fmt, va_list *args)
 	return (NULL);
 }
 
+static int output_append(char *s1, char *s2)
+{
+
+}
+
 int	ft_printf(const char *format, ...)
 {
 	va_list		args;
