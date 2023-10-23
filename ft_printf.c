@@ -39,7 +39,12 @@ static int print_append_arg(char **dst, t_format fmt, char *arg, size_t s1_len)
 	int		len;
 
 	if (fmt.specifier == 'c')
-		len = 1;
+	{
+		if (fmt.width > 1)
+			len = fmt.width;
+		else
+			len = 1;
+	}
 	else
 		len = ft_strlen(arg);
 	ret = ft_strnjoin(*dst, arg, s1_len, len);

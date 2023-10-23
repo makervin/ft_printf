@@ -1,22 +1,22 @@
 #include "ft_printf.h"
 
-char	*ft_apply_padding(char *str, t_format fmt)
+char	*ft_apply_padding(char *str, int len, int minus)
 {
 	char	*padding;
-	int		len;
+	char	*ret;
 
-	len = fmt.width - ft_strlen(str);
-	if (len > 0)
-	{
-		padding = (char *)ft_calloc(len + 1, sizeof(char));
-		while (len--)
-			padding[len] = ' ';
-		if (fmt.flags & FFLAG_MINUS)
-			str = ft_strjoin(str, padding);
-		else
-			str = ft_strjoin(padding, str);
-	}
-	return (str);
+	padding = (char *)ft_calloc(len + 1, sizeof(char));
+	if (!padding)
+		return (NULL);
+	while (len--)
+		padding[len] = ' ';
+	if (minus)
+		ret = ft_strjoin(str, padding);
+	else
+		ret = ft_strjoin(padding, str);
+	free(str);
+	free(padding);
+	return (ret);
 }
 
 char	*ft_apply_zero_padding(char *str, t_format fmt)

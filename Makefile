@@ -14,6 +14,8 @@ OBJS	= $(SRC:.c=.o)
 
 all: $(NAME)
 
+bonus: $(NAME)
+
 $(NAME): $(LIBFT) $(OBJS) $(LIBFT)
 	ar rsc $@ $(OBJS)
 
