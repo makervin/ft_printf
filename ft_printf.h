@@ -30,7 +30,7 @@ char		*ft_strnjoin_free(char *s1, char *s2, size_t s1_n, size_t s2_n);
 t_format	ft_parse_format(char **str, va_list *args);
 
 char		*ft_apply_padding(char *str, int width, int minus);
-char		*ft_apply_zero_padding(char *str, t_format fmt);
+char		*ft_apply_zero_padding(char *str, int width, int flags);
 char		*ft_apply_sign(char *str, int negative, t_format fmt);
 char		*ft_apply_precision(char *str, t_format fmt);
 

@@ -23,13 +23,13 @@ char	*ft_apply_padding(char *str, int width, int minus)
 	return (ret);
 }
 
-char	*ft_apply_zero_padding(char *str, t_format fmt)
+char	*ft_apply_zero_padding(char *str, int width, int flags)
 {
 	char	*padding;
 	int		len;
 
-	len = fmt.width - ft_strlen(str);
-	if (fmt.flags & FFLAG_SPACE || fmt.flags & FFLAG_PLUS)
+	len = width - ft_strlen(str);
+	if (flags & FFLAG_SPACE || flags & FFLAG_PLUS)
 		len--;
 	if (len > 0)
 	{

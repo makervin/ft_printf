@@ -50,7 +50,7 @@ char	*ft_convert_int(int i, t_format fmt)
 	{
 		if (i < 0)
 			fmt.width -= 1;
-		ret = ft_apply_zero_padding(ret, fmt);
+		ret = ft_apply_zero_padding(ret, fmt.width, fmt.flags);
 		ret = ft_apply_sign(ret, i < 0, fmt);
 	}
 	else 
@@ -70,7 +70,7 @@ char	*ft_convert_hex(unsigned int i, t_format fmt)
 	{
 		if (fmt.flags & FFLAG_ALT)
 			fmt.width -= 2;
-		ret = ft_apply_zero_padding(ret, fmt);
+		ret = ft_apply_zero_padding(ret, fmt.width, fmt.flags);
 		if (fmt.flags & FFLAG_ALT)
 			ret = ft_strjoin("0x", ret);
 	}
@@ -92,7 +92,7 @@ char	*ft_convert_uhex(unsigned int i, t_format fmt)
 	{
 		if (fmt.flags & FFLAG_ALT)
 			fmt.width -= 2;
-		ret = ft_apply_zero_padding(ret, fmt);
+		ret = ft_apply_zero_padding(ret, fmt.width, fmt.flags);
 		if (fmt.flags & FFLAG_ALT)
 			ret = ft_strjoin("0X", ret);
 	}
