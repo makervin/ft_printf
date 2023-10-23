@@ -2,6 +2,7 @@
 libftTester
 
 a.out
+test
 
 *.o
 *.a

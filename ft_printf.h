@@ -28,6 +28,7 @@ int			ft_printf(const char *format, ...);
 t_format	ft_parse_format(char **str);
 char		*ft_apply_padding(char *str, t_format fmt);
 char		*ft_apply_zero_padding(char *str, t_format fmt);
+char		*ft_apply_sign(char *str, int negative, t_format fmt);
 
 
 char		*ft_convert_char(char c, t_format fmt);

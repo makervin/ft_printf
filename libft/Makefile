@@ -3,6 +3,12 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -I.
 
 SRC			= \
+	conversions/ft_abs.c \
+	conversions/ft_atoi.c \
+	conversions/ft_itoa.c \
+	conversions/ft_utoa.c \
+	conversions/ft_ultoa_base.c \
+	conversions/ft_utoa_base.c \
 	ctype/ft_isalnum.c \
 	ctype/ft_isalpha.c \
 	ctype/ft_isascii.c \
@@ -24,18 +30,13 @@ SRC			= \
 	io/ft_putnbr_fd.c \
 	io/ft_putstr_fd.c \
 	io/ft_putunbr_fd.c \
-	memory/ft_atoi.c \
+	memory/ft_bzero.c \
 	memory/ft_calloc.c \
-	memory/ft_itoa.c \
-	memory/ft_utoa.c \
-	memory/ft_ultoa_base.c \
-	memory/ft_utoa_base.c \
-	string/ft_bzero.c \
-	string/ft_memchr.c \
-	string/ft_memcmp.c \
-	string/ft_memcpy.c \
-	string/ft_memmove.c \
-	string/ft_memset.c \
+	memory/ft_memchr.c \
+	memory/ft_memcmp.c \
+	memory/ft_memcpy.c \
+	memory/ft_memmove.c \
+	memory/ft_memset.c \
 	string/ft_split.c \
 	string/ft_strchr.c \
 	string/ft_strcpy.c \
