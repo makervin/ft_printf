@@ -15,47 +15,71 @@ static int	is_flag(char c)
 	return (0);
 }
 
-//	%[$][flags][width][.precision][length modifier]conversion
-t_format	ft_parse_format(char **str, va_list *args)
+static int	parse_flags(char **str)
 {
-	t_format	format;
+	int	flags;
 
-	format.width = 0;
-	format.flags = 0;
-	format.precision = 0;
-
+	flags = 0;
 	while (is_flag(**str))
 	{
-		format.flags |= is_flag(**str);
+		flags |= is_flag(**str);
 		(*str)++;
 	}
+	return (flags);
+}
+
+static int	parse_width(char **str)
+{
+	int	width;
+
+	width = 0;
 	if (**str >= '1' && **str <= '9')
 	{
-		format.width = **str - '0';
+		width = **str - '0';
 		(*str)++;
 		while (ft_isdigit(**str))
 		{
-			format.width = format.width * 10 + **str - '0';
+			width = width * 10 + **str - '0';
 			(*str)++;
 		}
 	}
+	return (width);
+}
+
+static int	parse_precision(char **str, va_list *args)
+{
+	int	precision;
+
+	precision = 0; 
 	if (**str == '.')
 	{
 		(*str)++;
 		if (**str == '*')
 		{
-			format.precision = va_arg(*args, int);
+			precision = va_arg(*args, int);
 			(*str)++;
 		}
 		else
 		{
 			while (ft_isdigit(**str))
 			{
-				format.precision = format.precision * 10 + **str - '0';
+				precision = precision * 10 + **str - '0';
 				(*str)++;
 			}
 		}
 	}
+	return (precision);
+}
+
+//	%[$][flags][width][.precision][length modifier]conversion
+t_format	ft_parse_format(char **str, va_list *args)
+{
+	t_format	format;
+
+	(*str)++;
+	format.flags = parse_flags(str);
+	format.width = parse_width(str);
+	format.precision = parse_precision(str, args);
 	format.specifier = **str;
 	(*str)++;
 	
