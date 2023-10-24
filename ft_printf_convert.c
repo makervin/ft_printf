@@ -17,11 +17,19 @@ char	*ft_convert_char(char c, t_format fmt)
 char	*ft_convert_str(char *str, t_format fmt)
 {
 	if (str == NULL)
-		str = (ft_strdup("(null)"));
+	{
+		if (fmt.precision > -1 && fmt.precision < 6)
+		{
+			str = ft_strdup("");
+			str = ft_apply_padding(str, fmt.width, fmt.flags & FFLAG_MINUS);
+			return (str);
+		}
+		str = ft_strdup("(null)");
+	}
 	else
 		str = (ft_strdup(str));
-	str = ft_apply_padding(str, fmt.width, fmt.flags & FFLAG_MINUS);
 	str = ft_apply_str_precision(str, fmt);
+	str = ft_apply_padding(str, fmt.width, fmt.flags & FFLAG_MINUS);
 	return (str);
 }
 
@@ -45,6 +53,12 @@ char	*ft_convert_int(int i, t_format fmt)
 {
 	char	*ret;
 
+	if (i == 0 && fmt.precision == 0)
+	{
+		ret = ft_strdup("");
+		ret = ft_apply_padding(ret, fmt.width, fmt.flags & FFLAG_MINUS);
+		return (ret);
+	}
 	ret = ft_utoa(ft_abs(i));
 	ret = ft_apply_precision(ret, fmt);
 	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)
@@ -66,6 +80,12 @@ char	*ft_convert_uint(unsigned int i, t_format fmt)
 {
 	char	*ret;
 
+	if (i == 0 && fmt.precision == 0)
+	{
+		ret = ft_strdup("");
+		ret = ft_apply_padding(ret, fmt.width, fmt.flags & FFLAG_MINUS);
+		return (ret);
+	}
 	ret = ft_utoa(i);
 	ret = ft_apply_precision(ret, fmt);
 	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)
@@ -80,6 +100,12 @@ char	*ft_convert_hex(unsigned int i, t_format fmt)
 	char	*ret;
 	char	*tmp;
 
+	if (i == 0 && fmt.precision == 0)
+	{
+		ret = ft_strdup("");
+		ret = ft_apply_padding(ret, fmt.width, fmt.flags & FFLAG_MINUS);
+		return (ret);
+	}
 	ret = ft_utoa_base(i, "0123456789abcdef");
 	ret = ft_apply_precision(ret, fmt);
 	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)
@@ -112,6 +138,12 @@ char	*ft_convert_uhex(unsigned int i, t_format fmt)
 	char	*ret;
 	char	*tmp;
 
+	if (i == 0 && fmt.precision == 0)
+	{
+		ret = ft_strdup("");
+		ret = ft_apply_padding(ret, fmt.width, fmt.flags & FFLAG_MINUS);
+		return (ret);
+	}
 	ret = ft_utoa_base(i, "0123456789ABCDEF");
 	ret = ft_apply_precision(ret, fmt);
 	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)

@@ -12,5 +12,7 @@ int main()
 	test_printf("%s", NULL);
 	test_printf("% 10s", NULL);
 	test_printf("%.s", "");
-	test_printf("%.1s", "hello");
+	test_printf("%7.05s", "hello");
+	test_printf("%.04s", NULL);
+	test_printf("%3.s", NULL);
 }

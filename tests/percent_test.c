@@ -5,5 +5,10 @@
 
 int main()
 {
+	test_printf("%");
+	test_printf("%%");
+	test_printf("%%%");
+	test_printf("%%%%");
+	test_printf("%%%%%");
 	test_printf("%5%");
 }
