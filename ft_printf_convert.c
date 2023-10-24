@@ -47,7 +47,7 @@ char	*ft_convert_int(int i, t_format fmt)
 
 	ret = ft_utoa(ft_abs(i));
 	ret = ft_apply_precision(ret, fmt);
-	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == 0)
+	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)
 	{
 		if (i < 0)
 			fmt.width -= 1;

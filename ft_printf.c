@@ -17,7 +17,7 @@ static char	*convert_arg(t_format fmt, va_list *args)
 	else if (fmt.specifier == 'X')
 		return (ft_convert_uhex(va_arg(*args, unsigned int), fmt));
 	else if (fmt.specifier == '%')
-		return (ft_convert_char('%', fmt));
+		return (ft_strdup("%"));
 	return (NULL);
 }
 

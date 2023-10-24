@@ -1,57 +1,26 @@
 #include <stdio.h>
 #include <limits.h>
 
-#include "ft_printf.h"
+#include "tester.h"
 
 int main()
 {
 	int	i = 42;
 
-	ft_printf	("lft: 'd'\t:%d\n", i);
-	printf		("std: 'd'\t:%d\n", i);
-	printf		("\n");
-	ft_printf	("lft: '2d'\t:%2d\n", -i);
-	printf		("std: '2d'\t:%2d\n", -i);
-	printf		("\n");
-	ft_printf	("lft: '5d'\t:%5d\n", i);
-	printf		("std: '5d'\t:%5d\n", i);
-	printf		("\n");
-	ft_printf	("lft: '05d'\t:%05d\n", i);
-	printf		("std: '05d'\t:%05d\n", i);
-	printf		("\n");
-	ft_printf	("lft: '05d'\t:%05d\n", -i);
-	printf		("std: '05d'\t:%05d\n", -i);
-	printf		("\n");
-	ft_printf	("lft: '-05dH'\t:%-05dH\n", i);
-	printf		("std: '-05dH'\t:%-05dH\n", i);
-	printf		("\n");
-	ft_printf	("lft: '-10dH'\t:%-10dH\n", i);
-	printf		("std: '-10dH'\t:%-10dH\n", i);
-	printf		("\n");
-	ft_printf	("lft: '+ 5d'\t:%+ 5d\n", i);
-	printf		("std: '+ 5d'\t:%+ 5d\n", i);
-	printf		("\n");
-	ft_printf	("lft: ' d'\t:% d\n", i);
-	printf		("std: ' d'\t:% d\n", i);
-	printf		("\n");
-	ft_printf	("lft: '+ d'\t:%+ d\n", i);
-	printf		("std: '+ d'\t:%+ d\n", i);
-	printf		("\n");
-	ft_printf	("lft: ' 05d'\t:% 05d\n", i);
-	printf		("std: ' 05d'\t:% 05d\n", i);
-	printf		("\n");
-	ft_printf	("lft: '5d'\t:%5d\n", -i);
-	printf		("std: '5d'\t:%5d\n", -i);
-	printf		("\n");
-	ft_printf	("lft: '.5d'\t:%.5d\n", -i);
-	printf		("std: '.5d'\t:%.5d\n", -i);
-	printf		("\n");
-	ft_printf	("lft: '10.5d'\t:%10.5d\n", -i);
-	printf		("std: '10.5d'\t:%10.5d\n", -i);
-	printf		("\n");
-	ft_printf	("lft: '10.5d'\t:%010.5d\n", -i);
-	printf		("std: '10.5d'\t:%010.5d\n", -i);
-	printf		("\n");
-	ft_printf	("lft: '10.5d'\t:%10.*d\n", 10, -i);
-	printf		("std: '10.5d'\t:%10.*d\n", 10, -i);
+	test_printf(" 'd'\t:%d", i);
+	test_printf(" '2d'\t:%2d", -i);
+	test_printf(" '5d'\t:%5d", i);
+	test_printf(" '05d'\t:%05d", i);
+	test_printf(" '05d'\t:%05d", -i);
+	test_printf(" '-05dH'\t:%-05dH", i);
+	test_printf(" '-10dH'\t:%-10dH", i);
+	test_printf(" '+ 5d'\t:%+ 5d", i);
+	test_printf(" ' d'\t:% d", i);
+	test_printf(" '+ d'\t:%+ d", i);
+	test_printf(" ' 05d'\t:% 05d", i);
+	test_printf(" '5d'\t:%5d", -i);
+	test_printf(" '.5d'\t:%.5d", -i);
+	test_printf(" '10.5d'\t:%10.5d", -i);
+	test_printf(" '10.5d'\t:%010.5d", -i);
+	test_printf(" '10.5d'\t:%10.*d", 10, -i);
 }	

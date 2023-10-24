@@ -25,7 +25,7 @@ typedef struct	s_format
 
 int			ft_printf(const char *format, ...);
 
-char		*ft_strnjoin_free(char *s1, char *s2, size_t s1_n, size_t s2_n);
+int			ft_vprintf(const char *format, va_list *ap);
 
 t_format	ft_parse_format(char **str, va_list *args);
 
