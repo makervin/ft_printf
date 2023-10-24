@@ -39,6 +39,7 @@ char		*ft_convert_char(char c, t_format fmt);
 char		*ft_convert_str(char *str, t_format fmt);
 char		*ft_convert_ptr(void *ptr, t_format fmt);
 char		*ft_convert_int(int i, t_format fmt);
+char		*ft_convert_uint(unsigned int i, t_format fmt);
 char		*ft_convert_hex(unsigned int i, t_format fmt);
 char		*ft_convert_uhex(unsigned int i, t_format fmt);
 

@@ -58,14 +58,12 @@ static int	parse_precision(char **str, va_list *args)
 		{
 			precision = va_arg(*args, int);
 			(*str)++;
+			return (precision);
 		}
-		else
+		while (ft_isdigit(**str))
 		{
-			while (ft_isdigit(**str))
-			{
-				precision = precision * 10 + **str - '0';
-				(*str)++;
-			}
+			precision = precision * 10 + **str - '0';
+			(*str)++;
 		}
 	}
 	return (precision);

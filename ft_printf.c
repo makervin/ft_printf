@@ -11,7 +11,7 @@ static char	*convert_arg(t_format fmt, va_list *args)
 	else if (fmt.specifier == 'd' || fmt.specifier == 'i')
 		return (ft_convert_int(va_arg(*args, int), fmt));
 	else if (fmt.specifier == 'u')
-		return (ft_utoa(va_arg(*args, unsigned int)));
+		return (ft_convert_uint(va_arg(*args, unsigned int), fmt));
 	else if (fmt.specifier == 'x')
 		return (ft_convert_hex(va_arg(*args, unsigned int), fmt));
 	else if (fmt.specifier == 'X')
