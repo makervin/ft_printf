@@ -7,6 +7,8 @@ int main()
 {
 	int	i = 42;
 
+	ft_printf	("lft\t:%#x\n", 1);
+	printf		("std\t:%#x\n", 1);
 	ft_printf	("lft\t:%#x\n", 255);
 	printf		("std\t:%#x\n", 255);
 	printf		("\n");
