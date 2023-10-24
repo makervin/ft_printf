@@ -50,9 +50,10 @@ static int	parse_precision(char **str, va_list *args)
 {
 	int	precision;
 
-	precision = 0; 
+	precision = -1; 
 	if (**str == '.')
 	{
+		precision = 0;
 		(*str)++;
 		if (**str == '*')
 		{

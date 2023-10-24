@@ -33,6 +33,7 @@ char		*ft_apply_padding(char *str, int width, int minus);
 char		*ft_apply_zero_padding(char *str, int width, int flags);
 char		*ft_apply_sign(char *str, int negative, t_format fmt);
 char		*ft_apply_precision(char *str, t_format fmt);
+char		*ft_apply_str_precision(char *str, t_format fmt);
 
 
 char		*ft_convert_char(char c, t_format fmt);

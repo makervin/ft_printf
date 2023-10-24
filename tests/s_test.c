@@ -5,6 +5,7 @@
 
 int main()
 {
+	int i;
 	ft_printf	("lft\t:%s\n", "hello");
 	printf		("std\t:%s\n", "hello");
 	printf		("\n");
@@ -22,4 +23,12 @@ int main()
 	printf		("\n");
 	ft_printf	("lft\t:% 10s\n", NULL);
 	printf		("std\t:% 10s\n", NULL);
+	printf		("\n");
+	ft_printf	("lft\t:%.s\n", "");
+	printf		("std\t:%.s\n", "");
+	printf		("\n");
+	i = ft_printf	("lft\t:%.1s", "hello");
+	printf(" | %d\n", i);
+	i = printf		("std\t:%.1s", "hello");
+	printf(" | %d\n", i);
 }

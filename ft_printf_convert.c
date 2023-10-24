@@ -21,6 +21,7 @@ char	*ft_convert_str(char *str, t_format fmt)
 	else
 		str = (ft_strdup(str));
 	str = ft_apply_padding(str, fmt.width, fmt.flags & FFLAG_MINUS);
+	str = ft_apply_str_precision(str, fmt);
 	return (str);
 }
 
@@ -67,7 +68,7 @@ char	*ft_convert_uint(unsigned int i, t_format fmt)
 
 	ret = ft_utoa(i);
 	ret = ft_apply_precision(ret, fmt);
-	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == 0)
+	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)
 		ret = ft_apply_zero_padding(ret, fmt.width, fmt.flags);
 	else
 		ret = ft_apply_padding(ret, fmt.width, fmt.flags & FFLAG_MINUS);
@@ -80,7 +81,8 @@ char	*ft_convert_hex(unsigned int i, t_format fmt)
 	char	*tmp;
 
 	ret = ft_utoa_base(i, "0123456789abcdef");
-	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS)
+	ret = ft_apply_precision(ret, fmt);
+	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)
 	{
 		if (fmt.flags & FFLAG_ALT && i > 0)
 			fmt.width -= 2;
@@ -111,7 +113,8 @@ char	*ft_convert_uhex(unsigned int i, t_format fmt)
 	char	*tmp;
 
 	ret = ft_utoa_base(i, "0123456789ABCDEF");
-	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS)
+	ret = ft_apply_precision(ret, fmt);
+	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)
 	{
 		if (fmt.flags & FFLAG_ALT && i > 0)
 			fmt.width -= 2;

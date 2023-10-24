@@ -82,3 +82,14 @@ char	*ft_apply_precision(char *str, t_format fmt)
 	free(padding);
 	return (ret);
 }
+
+char	*ft_apply_str_precision(char *str, t_format fmt)
+{
+	char	*ret;
+
+	if (fmt.precision == -1 || (int)ft_strlen(str) <= fmt.precision)
+		return (str);
+	ret = ft_substr(str, 0, fmt.precision);
+	free(str);
+	return (ret);
+}
