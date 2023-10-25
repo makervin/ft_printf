@@ -1,9 +1,12 @@
 .vscode
+.cache
 libftTester
 printfTester
 
+compile_commands.json
 a.out
 test
 
+.obj
 *.o
 *.a
