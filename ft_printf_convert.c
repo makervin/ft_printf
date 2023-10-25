@@ -62,7 +62,7 @@ char	*ft_convert_int(int i, t_format fmt)
 	ret = ft_apply_precision(ret, fmt);
 	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)
 	{
-		if (i < 0)
+		if (i < 0 || fmt.flags & FFLAG_SPACE || fmt.flags & FFLAG_PLUS)
 			fmt.width -= 1;
 		ret = ft_apply_zero_padding(ret, fmt.width, fmt.flags);
 		ret = ft_apply_sign(ret, i < 0, fmt);

@@ -17,6 +17,8 @@ void	test_printf(const char *format, ...)
 	int			ft_len;
 	int			std_len;
 
+	puts(format);
+
 	va_start(ap, format);
 	ft_printf("42  :");
 	ft_len = ft_vprintf(format, &ap);

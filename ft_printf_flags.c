@@ -29,9 +29,8 @@ char	*ft_apply_zero_padding(char *str, int width, int flags)
 	char	*padding;
 	int		len;
 
+	flags++;
 	len = width - ft_strlen(str);
-	if (flags & FFLAG_SPACE || flags & FFLAG_PLUS)
-		len--;
 	if (len <= 0)
 		return (str);
 	padding = (char *)ft_calloc(len + 1, sizeof(char));
@@ -70,8 +69,6 @@ char	*ft_apply_precision(char *str, t_format fmt)
 	int		len;
 
 	len = fmt.precision - ft_strlen(str);
-	if (fmt.flags & FFLAG_SPACE || fmt.flags & FFLAG_PLUS)
-		len--;
 	if (len <= 0)
 		return (str);
 	padding = (char *)ft_calloc(len + 1, sizeof(char));
