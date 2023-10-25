@@ -59,15 +59,15 @@ static int print_append_arg(char **dst, t_format fmt, char *arg, size_t s1_len)
 
 int	ft_vprintf(const char *format, va_list *ap)
 {
-	char	*output;
-	char	*procent;
-	int		len;
-	char	*arg;
-
+	char		*output;
+	char		*procent;
+	int			len;
+	char		*arg;
 	t_format	fmt;
+
 	output = ft_strdup("");
 	if (!output)
-		return -1;
+		return (-1);
 	procent = ft_strchr(format, '%');
 	len = 0;
 	while (procent != NULL)

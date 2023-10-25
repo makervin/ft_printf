@@ -1,12 +1,12 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <stdio.h>
+# include <stdarg.h>
+# include <stdio.h>
 
-#include "libft/libft.h"
+# include "libft/libft.h"
 
-typedef enum	e_fflags
+typedef enum e_fflags
 {
 	FFLAG_ALT	= 1 << 0,
 	FFLAG_ZERO	= 1 << 1,
@@ -15,7 +15,7 @@ typedef enum	e_fflags
 	FFLAG_MINUS	= 1 << 4,
 }				t_fflags;
 
-typedef struct	s_format
+typedef struct s_format
 {
 	char		specifier;
 	int			width;
@@ -24,7 +24,6 @@ typedef struct	s_format
 }				t_format;
 
 int			ft_printf(const char *format, ...);
-
 int			ft_vprintf(const char *format, va_list *ap);
 
 t_format	ft_parse_format(char **str, va_list *args);
@@ -34,7 +33,6 @@ char		*ft_apply_zero_padding(char *str, int width, int flags);
 char		*ft_apply_sign(char *str, int negative, t_format fmt);
 char		*ft_apply_precision(char *str, t_format fmt);
 char		*ft_apply_str_precision(char *str, t_format fmt);
-
 
 char		*ft_convert_char(char c, t_format fmt);
 char		*ft_convert_str(char *str, t_format fmt);

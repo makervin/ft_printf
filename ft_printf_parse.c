@@ -50,7 +50,7 @@ static int	parse_precision(char **str, va_list *args)
 {
 	int	precision;
 
-	precision = -1; 
+	precision = -1;
 	if (**str == '.')
 	{
 		precision = 0;
@@ -70,7 +70,6 @@ static int	parse_precision(char **str, va_list *args)
 	return (precision);
 }
 
-//	%[$][flags][width][.precision][length modifier]conversion
 t_format	ft_parse_format(char **str, va_list *args)
 {
 	t_format	format;
@@ -81,6 +80,5 @@ t_format	ft_parse_format(char **str, va_list *args)
 	format.precision = parse_precision(str, args);
 	format.specifier = **str;
 	(*str)++;
-	
 	return (format);
 }

@@ -10,7 +10,6 @@ char	*ft_convert_char(char c, t_format fmt)
 		ret[0] = c;
 	else
 		ret[ft_strlen(ret) - 1] = c;
-		
 	return (ret);
 }
 
@@ -68,7 +67,7 @@ char	*ft_convert_int(int i, t_format fmt)
 		ret = ft_apply_zero_padding(ret, fmt.width, fmt.flags);
 		ret = ft_apply_sign(ret, i < 0, fmt);
 	}
-	else 
+	else
 	{
 		ret = ft_apply_sign(ret, i < 0, fmt);
 		ret = ft_apply_padding(ret, fmt.width, fmt.flags & FFLAG_MINUS);
@@ -120,7 +119,7 @@ char	*ft_convert_hex(unsigned int i, t_format fmt)
 			free(tmp);
 		}
 	}
-	else 
+	else
 	{
 		if (fmt.flags & FFLAG_ALT && i > 0)
 		{
@@ -158,7 +157,7 @@ char	*ft_convert_uhex(unsigned int i, t_format fmt)
 			free(tmp);
 		}
 	}
-	else 
+	else
 	{
 		if (fmt.flags & FFLAG_ALT && i > 0)
 		{
