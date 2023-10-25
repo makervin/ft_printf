@@ -79,7 +79,11 @@ int	ft_vprintf(const char *format, va_list *ap)
 		fmt = ft_parse_format(&procent, ap);
 		arg = convert_arg(fmt, ap);
 		if (arg == NULL)
-			len += print_append_format(&output, &format, len, procent - format);
+		{
+			free(output);
+			return (-1);
+		}
+			// len += print_append_format(&output, &format, len, procent - format);
 		else
 		{
 			len += print_append_arg(&output, fmt, arg, len);
