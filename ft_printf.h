@@ -34,6 +34,7 @@ char		*ft_apply_sign(char *str, int negative, t_format fmt);
 char		*ft_apply_precision(char *str, t_format fmt);
 char		*ft_apply_str_precision(char *str, t_format fmt);
 
+char		*ft_convert_arg(t_format fmt, va_list *args);
 char		*ft_convert_char(char c, t_format fmt);
 char		*ft_convert_str(char *str, t_format fmt);
 char		*ft_convert_ptr(void *ptr, t_format fmt);

@@ -1,26 +1,5 @@
 #include "ft_printf.h"
 
-static char	*convert_arg(t_format fmt, va_list *args)
-{
-	if (fmt.specifier == 'c')
-		return (ft_convert_char(va_arg(*args, int), fmt));
-	else if (fmt.specifier == 's')
-		return (ft_convert_str(va_arg(*args, char *), fmt));
-	else if (fmt.specifier == 'p')
-		return (ft_convert_ptr(va_arg(*args, void *), fmt));
-	else if (fmt.specifier == 'd' || fmt.specifier == 'i')
-		return (ft_convert_int(va_arg(*args, int), fmt));
-	else if (fmt.specifier == 'u')
-		return (ft_convert_uint(va_arg(*args, unsigned int), fmt));
-	else if (fmt.specifier == 'x')
-		return (ft_convert_hex(va_arg(*args, unsigned int), fmt));
-	else if (fmt.specifier == 'X')
-		return (ft_convert_uhex(va_arg(*args, unsigned int), fmt));
-	else if (fmt.specifier == '%')
-		return (ft_strdup("%"));
-	return (NULL);
-}
-
 static char	*output_append_format(char *output, const char **format, size_t *len, size_t format_len)
 {
 	char	*ret;
@@ -37,6 +16,12 @@ static char	*output_append_arg(char *output, char *arg, size_t *s1_len, t_format
 	char	*ret;
 	size_t	len;
 
+	if (output == NULL || arg == NULL)
+	{
+		free(output);
+		free(arg);
+		return (NULL);
+	}
 	if (format.specifier == 'c')
 	{
 		if (format.width > 1)
@@ -53,6 +38,17 @@ static char	*output_append_arg(char *output, char *arg, size_t *s1_len, t_format
 	return (ret);
 }
 
+static int	print_output(char *output, size_t len)
+{
+	int	ret_len;
+
+	if (output == NULL)
+		return (-1);
+	ret_len = write(STDOUT_FILENO, output, len);
+	free(output);
+	return (ret_len);
+}
+
 int	ft_vprintf(const char *format, va_list *ap)
 {
 	char		*output;
@@ -64,32 +60,21 @@ int	ft_vprintf(const char *format, va_list *ap)
 	if (format == NULL)
 		return (-1);
 	output = ft_strdup("");
-	if (output == NULL)
-		return (-1);
 	percent = ft_strchr(format, '%');
 	len = 0;
 	while (percent != NULL)
 	{
 		output = output_append_format(output, &format, &len, percent - format);
+		arg_format = ft_parse_format(&percent, ap);
+		arg = ft_convert_arg(arg_format, ap);
+		output = output_append_arg(output, arg, &len, arg_format);
 		if (output == NULL)
 			return (-1);
-		arg_format = ft_parse_format(&percent, ap);
-		arg = convert_arg(arg_format, ap);
-		if (arg == NULL)
-		{
-			free(output);
-			return (-1);
-		}
-		output = output_append_arg(output, arg, &len, arg_format);
 		format += percent - format;
 		percent = ft_strchr(format, '%');
 	}
 	output = output_append_format(output, &format, &len, ft_strlen(format));
-	if (output == NULL)
-		return (-1);
-	len = write(STDOUT_FILENO, output, len);
-	free(output);
-	return (len);
+	return (print_output(output, len));
 }
 
 int	ft_printf(const char *format, ...)
