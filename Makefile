@@ -24,16 +24,14 @@ all: $(NAME)
 
 bonus: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS) 
 	ar rsc $@ $(OBJS)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c 
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-$(OBJS): $(OBJ_DIR)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(LIBFT):
 	make -C $(LIBFT_DIR) all

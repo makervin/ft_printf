@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef enum e_fflags
 {
