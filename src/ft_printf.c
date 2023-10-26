@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_printf.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: vockers <vockers@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/10/26 11:17:42 by vockers       #+#    #+#                 */
+/*   Updated: 2023/10/26 11:17:42 by vockers       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static char	*output_append_format(char *output, const char **format, size_t *len, size_t format_len)

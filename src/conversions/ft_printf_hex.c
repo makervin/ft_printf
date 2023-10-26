@@ -1,4 +1,16 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_printf_hex.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: vockers <vockers@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/10/26 11:18:05 by vockers       #+#    #+#                 */
+/*   Updated: 2023/10/26 11:18:05 by vockers       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../ft_printf.h"
 
 static char *apply_alt(char *str, int uppercase)
 {

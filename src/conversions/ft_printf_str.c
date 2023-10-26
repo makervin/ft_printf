@@ -1,4 +1,16 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_printf_str.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: vockers <vockers@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/10/26 11:17:57 by vockers       #+#    #+#                 */
+/*   Updated: 2023/10/26 11:17:57 by vockers       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../ft_printf.h"
 
 char	*ft_convert_str(char *str, t_format fmt)
 {

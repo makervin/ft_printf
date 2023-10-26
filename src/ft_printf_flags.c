@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_printf_flags.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: vockers <vockers@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/10/26 11:17:51 by vockers       #+#    #+#                 */
+/*   Updated: 2023/10/26 11:17:51 by vockers       ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char	*ft_apply_padding(char *str, int width, int minus)

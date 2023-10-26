@@ -1,6 +1,6 @@
 NAME		= libftprintf.a
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -I. -I./src -g
+CFLAGS		= -Wall -Wextra -Werror -I. -g
 
 SRC_DIR		= src
 OBJ_DIR		= .obj
