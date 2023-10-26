@@ -12,27 +12,28 @@ SRC		= \
 	ft_printf_convert.c \
 	ft_printf_flags.c \
 	ft_printf_parse.c \
-	conversions/ft_printf_char.c \
-	conversions/ft_printf_hex.c \
-	conversions/ft_printf_int.c \
-	conversions/ft_printf_ptr.c \
-	conversions/ft_printf_str.c \
+	ft_printf_char.c \
+	ft_printf_hex.c \
+	ft_printf_int.c \
+	ft_printf_ptr.c \
+	ft_printf_str.c \
 
 OBJS	= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 bonus: $(NAME)
-	
-test:
-	@echo $(OBJS)
 
 $(NAME): $(LIBFT) $(OBJS) $(LIBFT)
 	ar rsc $@ $(OBJS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(dir $@) 
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c 
 	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(OBJS): $(OBJ_DIR)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR) all

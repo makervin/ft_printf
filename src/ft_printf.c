@@ -12,7 +12,19 @@
 
 #include "ft_printf.h"
 
-static char	*output_append_format(char *output, const char **format, size_t *len, size_t format_len)
+static int	print_output(char *output, size_t len)
+{
+	int	ret_len;
+
+	if (output == NULL)
+		return (-1);
+	ret_len = write(STDOUT_FILENO, output, len);
+	free(output);
+	return (ret_len);
+}
+
+static char	*output_append_format(char *output,
+const char **format, size_t *len, size_t format_len)
 {
 	char	*ret;
 
@@ -23,14 +35,16 @@ static char	*output_append_format(char *output, const char **format, size_t *len
 	return (ret);
 }
 
-static char	*output_append_arg(char *output, char *arg, size_t *s1_len, t_format format)
+static char	*output_append_arg(char *output, char *arg,
+size_t *s1_len, t_format format)
 {
 	char	*ret;
 	size_t	len;
 
-	if (output == NULL || arg == NULL)
+	if (arg == NULL)
 	{
-		free(output);
+		if (output)
+			print_output(output, *s1_len);
 		free(arg);
 		return (NULL);
 	}
@@ -48,17 +62,6 @@ static char	*output_append_arg(char *output, char *arg, size_t *s1_len, t_format
 	free(arg);
 	*s1_len += len;
 	return (ret);
-}
-
-static int	print_output(char *output, size_t len)
-{
-	int	ret_len;
-
-	if (output == NULL)
-		return (-1);
-	ret_len = write(STDOUT_FILENO, output, len);
-	free(output);
-	return (ret_len);
 }
 
 int	ft_vprintf(const char *format, va_list *ap)
