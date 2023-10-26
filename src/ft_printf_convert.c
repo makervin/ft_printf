@@ -25,9 +25,11 @@ char	*ft_convert_arg(t_format fmt, va_list *args)
 	else if (fmt.specifier == 'u')
 		return (ft_convert_uint(va_arg(*args, unsigned int), fmt));
 	else if (fmt.specifier == 'x')
-		return (ft_convert_hex(va_arg(*args, unsigned int), fmt));
+		return (ft_convert_hex(va_arg(*args, unsigned int), fmt,
+				"0123456789abcdef", 0));
 	else if (fmt.specifier == 'X')
-		return (ft_convert_upperhex(va_arg(*args, unsigned int), fmt));
+		return (ft_convert_hex(va_arg(*args, unsigned int), fmt,
+				"0123456789ABCDEF", 1));
 	else if (fmt.specifier == '%')
 		return (ft_strdup("%"));
 	return (NULL);

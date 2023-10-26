@@ -24,7 +24,8 @@ char	*ft_convert_int(int i, t_format fmt)
 	}
 	ret = ft_utoa(ft_abs(i));
 	ret = ft_apply_precision(ret, fmt);
-	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)
+	if (fmt.flags & FFLAG_ZERO && ~ fmt.flags & FFLAG_MINUS
+		&& fmt.precision == -1)
 	{
 		if (i < 0 || fmt.flags & FFLAG_SPACE || fmt.flags & FFLAG_PLUS)
 			fmt.width -= 1;
@@ -51,7 +52,8 @@ char	*ft_convert_uint(unsigned int i, t_format fmt)
 	}
 	ret = ft_utoa(i);
 	ret = ft_apply_precision(ret, fmt);
-	if (fmt.flags & FFLAG_ZERO && ~fmt.flags & FFLAG_MINUS && fmt.precision == -1)
+	if (fmt.flags & FFLAG_ZERO && ~ fmt.flags & FFLAG_MINUS
+		&& fmt.precision == -1)
 		ret = ft_apply_zero_padding(ret, fmt.width, fmt.flags);
 	else
 		ret = ft_apply_padding(ret, fmt.width, fmt.flags & FFLAG_MINUS);

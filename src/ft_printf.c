@@ -23,8 +23,8 @@ static int	print_output(char *output, size_t len)
 	return (ret_len);
 }
 
-static char	*output_append_format(char *output,
-const char **format, size_t *len, size_t format_len)
+static char	*output_append_format(char *output, const char **format,
+									size_t *len, size_t format_len)
 {
 	char	*ret;
 
@@ -36,7 +36,7 @@ const char **format, size_t *len, size_t format_len)
 }
 
 static char	*output_append_arg(char *output, char *arg,
-size_t *s1_len, t_format format)
+								size_t *s1_len, t_format format)
 {
 	char	*ret;
 	size_t	len;
