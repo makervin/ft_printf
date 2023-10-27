@@ -29,7 +29,7 @@ char	*ft_convert_int(int i, t_format fmt)
 	{
 		if (i < 0 || fmt.flags & FFLAG_SPACE || fmt.flags & FFLAG_PLUS)
 			fmt.width -= 1;
-		ret = ft_apply_zero_padding(ret, fmt.width, fmt.flags);
+		ret = ft_apply_zero_padding(ret, fmt.width);
 		ret = ft_apply_sign(ret, i < 0, fmt);
 	}
 	else
@@ -54,7 +54,7 @@ char	*ft_convert_uint(unsigned int i, t_format fmt)
 	ret = ft_apply_precision(ret, fmt);
 	if (fmt.flags & FFLAG_ZERO && ~ fmt.flags & FFLAG_MINUS
 		&& fmt.precision == -1)
-		ret = ft_apply_zero_padding(ret, fmt.width, fmt.flags);
+		ret = ft_apply_zero_padding(ret, fmt.width);
 	else
 		ret = ft_apply_padding(ret, fmt.width, fmt.flags & FFLAG_MINUS);
 	return (ret);

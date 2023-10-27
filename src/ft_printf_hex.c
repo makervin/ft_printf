@@ -40,7 +40,7 @@ char	*ft_convert_hex(unsigned int i, t_format fmt, char *base, int uppercase)
 	{
 		if (fmt.flags & FFLAG_ALT && i > 0)
 			fmt.width -= 2;
-		ret = ft_apply_zero_padding(ret, fmt.width, fmt.flags);
+		ret = ft_apply_zero_padding(ret, fmt.width);
 		if (fmt.flags & FFLAG_ALT && i > 0)
 			ret = apply_alt(ret, uppercase);
 	}

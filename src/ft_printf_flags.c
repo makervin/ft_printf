@@ -35,13 +35,12 @@ char	*ft_apply_padding(char *str, int width, int minus)
 	return (ret);
 }
 
-char	*ft_apply_zero_padding(char *str, int width, int flags)
+char	*ft_apply_zero_padding(char *str, int width)
 {
 	char	*ret;
 	char	*padding;
 	int		len;
 
-	flags++;
 	len = width - ft_strlen(str);
 	if (len <= 0)
 		return (str);
