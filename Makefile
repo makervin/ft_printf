@@ -24,7 +24,8 @@ all: $(NAME)
 
 bonus: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS) 
+$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS)
+	cp -r $(LIBFT) $(NAME)
 	ar rsc $@ $(OBJS)
 
 $(OBJ_DIR):
