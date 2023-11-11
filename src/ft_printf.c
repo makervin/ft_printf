@@ -64,7 +64,7 @@ static char	*output_append_arg(char *output, char *arg,
 	return (ret);
 }
 
-int	ft_vprintf(const char *format, va_list *ap)
+int	ft_vprintf(const char *format, va_list ap)
 {
 	char		*output;
 	char		*percent;
@@ -98,7 +98,7 @@ int	ft_printf(const char *format, ...)
 	int			len;
 
 	va_start(ap, format);
-	len = ft_vprintf(format, &ap);
+	len = ft_vprintf(format, ap);
 	va_end(ap);
 	return (len);
 }

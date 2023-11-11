@@ -36,9 +36,9 @@ typedef struct s_format
 }				t_format;
 
 int			ft_printf(const char *format, ...);
-int			ft_vprintf(const char *format, va_list *ap);
+int			ft_vprintf(const char *format, va_list ap);
 
-t_format	ft_parse_format(char **str, va_list *args);
+t_format	ft_parse_format(char **str, va_list args);
 
 char		*ft_apply_padding(char *str, int width, int minus);
 char		*ft_apply_zero_padding(char *str, int width);
@@ -46,7 +46,7 @@ char		*ft_apply_sign(char *str, int negative, t_format fmt);
 char		*ft_apply_precision(char *str, t_format fmt);
 char		*ft_apply_str_precision(char *str, t_format fmt);
 
-char		*ft_convert_arg(t_format fmt, va_list *args);
+char		*ft_convert_arg(t_format fmt, va_list args);
 char		*ft_convert_char(char c, t_format fmt);
 char		*ft_convert_str(char *str, t_format fmt);
 char		*ft_convert_ptr(void *ptr, t_format fmt);

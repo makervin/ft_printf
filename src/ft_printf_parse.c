@@ -58,7 +58,7 @@ static int	parse_width(char **str)
 	return (width);
 }
 
-static int	parse_precision(char **str, va_list *args)
+static int	parse_precision(char **str, va_list args)
 {
 	int	precision;
 
@@ -69,7 +69,7 @@ static int	parse_precision(char **str, va_list *args)
 		(*str)++;
 		if (**str == '*')
 		{
-			precision = va_arg(*args, int);
+			precision = va_arg(args, int);
 			(*str)++;
 			return (precision);
 		}
@@ -82,7 +82,7 @@ static int	parse_precision(char **str, va_list *args)
 	return (precision);
 }
 
-t_format	ft_parse_format(char **str, va_list *args)
+t_format	ft_parse_format(char **str, va_list args)
 {
 	t_format	format;
 
